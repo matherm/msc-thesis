@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{report}		                                   
+
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{multicol} 
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{nameref}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage[round]{natbib}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{aliascnt}
+\usepackage[table]{xcolor}
+\usepackage[bottom]{footmisc}
+\usepackage[ngerman]{babel}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{hypcap}
+\hypersetup{pdftex,colorlinks=true,allcolors=black}
+
+\definecolor{dkgreen}{rgb}{0,.6,0}
+\definecolor{dkblue}{rgb}{0,0,.6}
+\definecolor{dkyellow}{rgb}{.5,.4,0}
+
+\lstset{
+  language        = c++,
+  basicstyle      = \small\ttfamily,
+  keywordstyle    = \color{dkblue},
+  stringstyle     = \color{red},
+  identifierstyle = \color{black},
+  commentstyle    = \color{gray},
+  emph            =[1]{php},
+  emphstyle       =[1]\color{black},
+  emph            =[2]{if,and,or,else, var, then, set},
+  emphstyle       =[2]\color{dkyellow}}
+
+\newaliascnt{eqfloat}{equation}
+\newfloat{eqfloat}{h}{eqflts}
+\floatname{eqfloat}{Equation}
+
+\newcommand*{\ORGeqfloat}{}
+\let\ORGeqfloat\eqfloat
+\def\eqfloat{%
+  \let\ORIGINALcaption\caption
+  \def\caption{%
+    \addtocounter{equation}{-1}%
+    \ORIGINALcaption
+  }%
+  \ORGeqfloat
+}
+\parindent 0em
+
+\bibliographystyle{bst_styles/apalike_german}
+
+\newcommand{\thema}{Methoden des Deep Learning im Bereich Convolutional Neural Networks}
+\newcommand{\schlagworte}{Machine Learning, Deep Learning, Convolutional Neural Network, Convolutional Autoencoder, Backpropagation, Gradient Descent, Regularization, Visualization MNIST, CIFAR-10}
+
+\newcommand{\zusammenfassung}{
+This thesis deals with Convolutional Neural Networks (CNNs) and their application in Deep Learning. CNNs represent a special case of Neural Networks which assume that the inputs have local features. These assumptions allow to encode certain properties into the architecture and make CNNs the state-of-the-art technology for image recognition, speech recognition and natural language processing. CNNs are Neural Network with special Convolution- and Pooling-Layers in the first layers for implicit feature extraction. Based on these features the last layers of the neural network perform classification or regression tasks. The new field of Deep Learning provides some very useful methods and tricks to address the difficulties in training such deep Neural Networks with Backpropagation. These tackle mainly the so called vanishing gradient effect and issues in optimazation of non-convex cost functions. Within the frame of this thesis the development of a CNN library is being described. It reaches a test error of 0.61 \% on MNIST respectively 25.02 \% on CIFAR-10 and provides most of the current techniques as Max-Pooling, Dropout training, unsupervised pre-training and visualization of features. Further it contains recent gradient descent acceleration methods as Equilibrium SGD, Nesterov-Momentum, RMSprop and AdaDelta.
+}
+
+
+\newcommand{\ausgabedatum}{01.04.2015}
+\newcommand{\abgabedatum}{30.09.2015}
+\newcommand{\autor}{Matthias Hermann}
+\newcommand{\autorStrasse}{Zimmererweg 3}
+\newcommand{\autorPLZ}{78467} 
+\newcommand{\autorOrt}{Konstanz}
+\newcommand{\autorGeburtsort}{Wangen im Allgäu}
+\newcommand{\autorGeburtsdatum}{04.12.1988}
+\newcommand{\prueferA}{Prof. Dr. Matthias O. Franz}
+\newcommand{\prueferB}{Martin Schall, M. Sc.}
+\newcommand{\firma}{HTWG Konstanz}
+\newcommand{\studiengang}{Master of Science, Informatik}
+\newcommand{\danksagung}{
+F\"ur die wissenschaftliche Betreuung meiner Masterarbeit und die interessanten und motivierenden Besprechungen m\"ochte ich mich herzlich bei Prof. Dr. Matthias Franz bedanken. Ein herzlicher Dank geht auch an Martin Schall für die Erstellung des Zweitgutachtens sowie die vielen aufschlussreichen Diskussionen.\newline \newline
+Dank gilt außerdem Michael Grundwald für die Durchsicht meiner Arbeit und die zahlreichen konstruktive Vorschl\"age. \newline \newline
+Ganz herzlich m\"ochte ich mich schließlich bei ZF Friedrichshafen AG und insbesondere bei Timo Möllers, Andreas Bauer und Wolfgang Duttle bedanken. Diese erm\"oglichten mir das Studium und standen w\"ahrend meines gesamten Masterstudiums unterst\"utzend zur Seite.
+}
+ 
+\begin{document} 
+ 
+\include{chapters/header}    
+
+\include{chapters/1Einleitung}
+\include{chapters/2NeuronaleNetze}
+\input{chapters/3CNN}
+\include{chapters/4Training}
+\include{chapters/6Implementierung}
+\include{chapters/7Experimente}
+\include{chapters/8Fazit}
+
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{bibtex/literatur}
+
+
+
+
+\end{document}

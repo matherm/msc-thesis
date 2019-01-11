@@ -1,0 +1,61 @@
+\section{Python Modellbeschreibung}
+
+
+\begin{lstlisting}[language=Python,label=ls:struct,caption=Definitionen der Structs für die Kommunikation zwischen den einzelnen Schichten des CNN,captionpos=b]
+
+
+'''
+Created on Jul 22, 2015
+
+@author: Matthias
+'''
+
+def getModelAsString():
+	Model = str("########################################################################################### 		\n" 
+				+ "#	Model Configuration file 																	\n"
+				+ "#	 																							\n"
+				+ "#	Author: Matthias Hermann 12.7.2015 															\n"
+				+ "# 																								\n"
+				+ "#	Glossar: 																					\n"
+				+ "#	Non linearity: 																				\n"
+				+ "# 	SIGMOID = 0 | TANH = 1 | RELU = 2 | SOFTMAX = 3 | SOFTPLUS = 4 	| LINEAR = 5				\n"
+				+ "#	Pooling type: 																				\n"
+				+ "#	POOL_MAX = 0 | POOL_MEAN = 1 | POOL_MAX_WITH_LOCATION = 2 | POOL_STOCHASTIC = 3 			\n"
+				+ "#	loss: 																						\n"
+				+ "#	CROSS ENTROPY = 0  | MSE = 1 																\n"
+				+ "# 																								\n"
+				+ "#	!!Order of parameters and \\t between name and value matters!!! 								\n"
+				+ "# 																								\n"
+				+ "########################################################################################### 		\n"
+				+ "																									\n"
+				+ "[CONVLAYER]																						\n"
+				+ "nonlinearity	2																					\n"
+				+ "filtersize	5																					\n"
+				+ "featuremaps	20																					\n"
+				+ "inputmaps	1																					\n"
+				+ "poolingfactor	2																				\n"
+				+ "poolingtype	2																					\n"
+				+ "dropoutrate	0.																					\n"
+				+ "																									\n"
+				+ "[CONVLAYER]                                                                                      \n"   
+				+ "nonlinearity	2																					\n"
+				+ "filtersize	5																					\n"
+				+ "featuremaps	50																					\n"
+				+ "inputmaps	20																					\n"
+				+ "poolingfactor	2																				\n"
+				+ "poolingtype	2																					\n"
+				+ "dropoutrate	0																					\n"
+				+ "																									\n"
+				+ "[HIDDENLAYER]																					\n"
+				+ "nonlinearity	2																					\n"
+				+ "hiddenneurons	500																				\n"
+				+ "dropoutrate	0 																					\n"
+				+ "																									\n"
+				+ "[ERROR]																							\n"
+				+ "activation	3																					\n"
+				+ "classes	10																						\n"
+				+ "loss	0																							\n")
+	return Model	
+	
+	
+\end{lstlisting}
